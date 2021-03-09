@@ -1,9 +1,12 @@
 import './App.css';
+import TicketDisplay from './components/TicketDisplay';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <p>Hello</p>
+      <Navbar />
+      <TicketDisplay />
     </div>
   );
 }
