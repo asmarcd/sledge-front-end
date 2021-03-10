@@ -3,12 +3,12 @@ import { ViewContext } from '../App';
 
 const Navbar = () => {
 
-    const openTicketCreator = useContext(ViewContext)
+    const toggleTicketCreator = useContext(ViewContext);
 
     return (
         <div>
             <h2>Navbar will go here</h2>
-            <button onClick={openTicketCreator}>Create New Ticket</button>
+            <button onClick={toggleTicketCreator}>Create New Ticket</button>
         </div>
     )
 }
