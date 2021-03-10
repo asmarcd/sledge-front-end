@@ -10,7 +10,8 @@ const TicketDisplay = () => {
             .then(result => {
                 setTickets(result)
             })
-    }, [])
+    }, []);
+    // I believe this will run every time this component renders, so there's no need to pass through the view state to the array in useEffect. It should refresh the tickets by checking the database every time. The issue is more one of timing, since the creation of the new ticket may take longer than the rerendering of this component. I should take that into consideration with how the submit button is set up on the new ticket form.
 
 
     return (

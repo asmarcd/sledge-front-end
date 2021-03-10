@@ -7,7 +7,7 @@ const TicketCreator = () => {
 
     return (
         <div>
-            <div>Ticket Creator</div>
+            <h1>Ticket Creator</h1>
             <button onClick={toggleTicketCreator}>Submit</button>
             <button onClick={toggleTicketCreator}>Cancel</button>
         </div>
