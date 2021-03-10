@@ -16,9 +16,21 @@ const TicketDisplay = () => {
     return (
         <div>
             <h1>Tickets will go here</h1>
-            <div className='ticketContainer'>
-
-            </div>
+            <section className='ticketContainer'>
+                    {tickets.map(ticket => {
+                        return (
+                            <div>
+                                <h3>{ticket.title}</h3>
+                                <h4>Creator: TBD Owner: {ticket.owner}</h4>
+                                <h4>Created: {ticket.createdAt} Last Updated: {ticket.updatedAt}</h4>
+                                <p>{ticket.type}</p>
+                                <p>{ticket.description}</p>
+                                <p>Priority {ticket.priority}</p>
+                                <button>Edit</button>
+                            </div>
+                        )
+                    })}
+            </section>
         </div>
     )
 }
