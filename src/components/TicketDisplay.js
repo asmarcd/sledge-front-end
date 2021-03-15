@@ -10,7 +10,12 @@ const TicketDisplay = () => {
             .then(result => {
                 setTickets(result)
             })
+            console.log(tickets)
     }, []);
+
+    const deleteTicket = e => {
+        API.deleteTicket(e.target.value).then(res => console.log(res));
+    }
 
     return (
         <div>
@@ -26,6 +31,7 @@ const TicketDisplay = () => {
                             <p>{ticket.description}</p>
                             <p>Priority {ticket.priority}</p>
                             <button>Edit</button>
+                            <button value={ticket.id} onClick={deleteTicket}>Delete</button>
                         </div>
                     )
                 })}

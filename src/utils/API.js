@@ -30,6 +30,20 @@ const API = {
         } catch (err) {
             return null;
         }
+    },
+
+    deleteTicket: async deletedID => {
+        try {
+            const res = await fetch(`${URL_PREFIX}/tickets/${deletedID}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            return await res.json();
+        } catch (err) {
+            return null
+        }
     }
     // remember to add comma above when you add next function
 }
