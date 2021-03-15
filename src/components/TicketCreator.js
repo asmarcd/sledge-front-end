@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { ViewContext } from '../App';
 import API from '../utils/API';
-import useForm from '../utils/CustomHooks'
+import useForm from '../utils/CustomHooks';
 
 const TicketCreator = () => {
 
     const toggleTicketCreator = useContext(ViewContext);
 
     const newTicket = () => {
-        API.createTicket()
+        API.createTicket(inputs).then(res => console.log(res))
 
         alert(`New Ticket Submitted!
         Title: ${inputs.title}`)
