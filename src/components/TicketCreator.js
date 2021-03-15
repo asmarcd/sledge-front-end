@@ -28,6 +28,11 @@ const TicketCreator = () => {
                 </label>
                 <br />
                 <label>
+                    Status:
+                    <input type="text" name="status" onChange={handleInputChange} value={inputs.status} />
+                </label>
+                <br />
+                <label>
                     Label:
                     <input type="text" name="label" onChange={handleInputChange} value={inputs.label} />
                 </label>
