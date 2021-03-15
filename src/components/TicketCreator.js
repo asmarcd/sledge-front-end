@@ -8,7 +8,7 @@ const TicketCreator = () => {
     const toggleTicketCreator = useContext(ViewContext);
 
     const newTicket = () => {
-        API.createTicket(inputs).then(res => console.log(res))
+        API.createTicket(inputs)
 
         alert(`New Ticket Submitted!
         Title: ${inputs.title}`)

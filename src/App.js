@@ -8,15 +8,15 @@ export const ViewContext = React.createContext();
 
 function App() {
 
-  const [ticketCreatorView, setTicketCreatorView] = useState(false)
-
+  const [ticketCreatorView, setTicketCreatorView] = useState(false);
+ 
   const toggleTicketCreator = () => {
     if (!ticketCreatorView) {
       setTicketCreatorView(true);
     } else {
       setTicketCreatorView(false);
     }
-  }
+  };
 
   return (
     <div className="App">

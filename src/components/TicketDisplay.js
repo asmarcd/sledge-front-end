@@ -4,18 +4,27 @@ import API from '../utils/API';
 const TicketDisplay = () => {
 
     const [tickets, setTickets] = useState([]);
+    const [updatePage, setUpdatePage] = useState(false);
 
     useEffect(() => {
         API.allTickets()
             .then(result => {
                 setTickets(result)
             })
-            console.log(tickets)
-    }, []);
+    }, [updatePage]);
 
     const deleteTicket = e => {
-        API.deleteTicket(e.target.value).then(res => console.log(res));
+        API.deleteTicket(e.target.value)
+        .then(ticketViewRefresh())
     }
+
+    const ticketViewRefresh = () => {
+        if (!updatePage) {
+          setUpdatePage(true);
+        } else {
+          setUpdatePage(false);
+        }
+      }
 
     return (
         <div>
@@ -23,7 +32,7 @@ const TicketDisplay = () => {
             <section className='ticketContainer'>
                 {tickets.map(ticket => {
                     return (
-                        <div>
+                        <div key={ticket.id}>
                             <h3>{ticket.title}</h3>
                             <h4>Creator: TBD Owner: {ticket.owner}</h4>
                             <h4>Created: {ticket.createdAt} Last Updated: {ticket.updatedAt}</h4>
