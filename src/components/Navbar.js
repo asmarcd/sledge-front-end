@@ -7,7 +7,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <h2>Navbar will go here</h2>
+            <h2>Navbar</h2>
             <button onClick={toggleTicketCreator}>Create New Ticket</button>
         </div>
     )
