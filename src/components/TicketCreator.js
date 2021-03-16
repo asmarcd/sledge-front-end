@@ -2,11 +2,22 @@ import React, { useContext, useState } from 'react';
 import { ViewContext } from '../App';
 import API from '../utils/API';
 import useForm from '../utils/CustomHooks';
+import LabelCreator from './LabelCreator';
+
+export const LabelContext = React.createContext();
 
 const TicketCreator = () => {
 
     const toggleTicketCreator = useContext(ViewContext);
-    const [newLabelView, setNewLabelView] = useState(false)
+    const [newLabelView, setNewLabelView] = useState(false);
+
+    const toggleLabelCreator = () => {
+        if (!newLabelView) {
+            setNewLabelView(true);
+        } else {
+            setNewLabelView(false);
+        }
+    };
 
     const newTicket = () => {
         API.createTicket(inputs)
@@ -19,13 +30,13 @@ const TicketCreator = () => {
 
     const { inputs, handleInputChange, handleSubmit } = useForm(newTicket);
 
-    const labelCreatorView = () => {
-        setNewLabelView(true);
-    }
-
     return (
         <div>
             <h1>Submit a New Ticket</h1>
+            <button onClick={toggleLabelCreator}>Add a new label</button>
+            <LabelContext.Provider value={toggleLabelCreator}>
+                {newLabelView ? <LabelCreator /> : <div></div>}
+            </LabelContext.Provider>
             <form onSubmit={handleSubmit}>
                 <label>
                     Title:
@@ -44,10 +55,8 @@ const TicketCreator = () => {
                 <br />
                 <label>
                     Choose a Label:
-                    <select name="label" onChange={handleInputChange} value={inputs.label} props={setNewLabelView}>
+                    <select name="label" onChange={handleInputChange} value={inputs.label}>
                     </select>
-                    {/* react is reading this button as a submit for the whole form, so the label creator never comes up, since it "submits" this form and doesn't move into that phase. Need to rework this. */}
-                    <button onClick={labelCreatorView}>Add a label</button>
                 </label>
                 <br />
                 <label>

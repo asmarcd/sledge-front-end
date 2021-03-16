@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useForm from '../utils/CustomHooks';
 import API from '../utils/API';
+import { LabelContext } from './TicketCreator'
 
-const LabelCreator = (setNewLabelView) => {
+const LabelCreator = () => {
+
+    const toggleLabelCreator = useContext(LabelContext);
 
     const newLabel = () => {
         API.createLabel(inputs);
 
         alert(`New Label ${inputs.name} Created!`);
 
-        setNewLabelView(false);
+        toggleLabelCreator();
     }
 
     const { inputs, handleInputChange, handleSubmit } = useForm(newLabel);
