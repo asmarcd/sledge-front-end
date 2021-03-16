@@ -44,6 +44,21 @@ const API = {
         } catch (err) {
             return null
         }
+    },
+
+    createLabel: async newLabel => {
+        try {
+            const res = await fetch(`${URL_PREFIX}/labels`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newLabel)
+            });
+            return await res.json();
+        } catch (err) {
+            return null;
+        }
     }
     // remember to add comma above when you add next function
 }
