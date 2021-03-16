@@ -56,8 +56,8 @@ const TicketCreator = () => {
                 <label>
                     Status:
                     <select name="status" onChange={handleInputChange} value={inputs.status}>
-                        <option value='Pending'>Pending</option>
                         <option value='To Do'>To Do</option>
+                        <option value='In Progress'>In Progress</option>
                         <option value='Complete'>Complete</option>
                         <option value='Archived'>Archived</option>
                     </select>

@@ -26,9 +26,11 @@ const TicketDisplay = () => {
         }
       }
 
+    //   organize by type, so to do, in progress, complete, each have their own column. You can pull up archived separately. 
+
     return (
         <div>
-            <h1>Tickets will go here</h1>
+            <h1>Tickets</h1>
             <section className='ticketContainer'>
                 {tickets.map(ticket => {
                     return (
@@ -36,7 +38,7 @@ const TicketDisplay = () => {
                             <h3>{ticket.title}</h3>
                             <h4>Creator: TBD Owner: {ticket.owner}</h4>
                             <h4>Created: {ticket.createdAt} Last Updated: {ticket.updatedAt}</h4>
-                            <p>{ticket.type}</p>
+                            <p>{ticket.label}</p>
                             <p>{ticket.description}</p>
                             <p>Priority {ticket.priority}</p>
                             <button>Edit</button>
