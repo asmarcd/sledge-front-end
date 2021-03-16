@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { ViewContext } from '../App';
 import API from '../utils/API';
 import useForm from '../utils/CustomHooks';
@@ -10,6 +10,14 @@ const TicketCreator = () => {
 
     const toggleTicketCreator = useContext(ViewContext);
     const [newLabelView, setNewLabelView] = useState(false);
+    const [labels, setLabels] = useState([]);
+
+    useEffect(() => {
+        API.allLabels()
+            .then(result => {
+                setLabels(result);
+            })
+    }, [newLabelView]);
 
     const toggleLabelCreator = () => {
         if (!newLabelView) {
@@ -27,6 +35,8 @@ const TicketCreator = () => {
 
         toggleTicketCreator();
     }
+
+
 
     const { inputs, handleInputChange, handleSubmit } = useForm(newTicket);
 
@@ -56,6 +66,9 @@ const TicketCreator = () => {
                 <label>
                     Choose a Label:
                     <select name="label" onChange={handleInputChange} value={inputs.label}>
+                        {labels.map(label => {
+                            return (<option key={label.id} value={label.name}>{label.name}</option>)
+                        })}
                     </select>
                 </label>
                 <br />

@@ -46,6 +46,18 @@ const API = {
         }
     },
 
+    allLabels: async labels => {
+        try {
+            const res = await fetch(`${URL_PREFIX}/labels`, {
+                method: 'GET',
+                body: JSON.stringify(labels)
+            });
+            return await res.json();
+        } catch (err) {
+            return null;
+        }
+    },
+
     createLabel: async newLabel => {
         try {
             const res = await fetch(`${URL_PREFIX}/labels`, {
