@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API from '../utils/API';
+import useForm from '../utils/CustomHooks';
 
 const TicketDisplay = () => {
 
@@ -19,11 +20,6 @@ const TicketDisplay = () => {
             .then(ticketViewRefresh())
     }
 
-    const editTicket = e => {
-        API.editTicket(e.target.value)
-        .then(ticketViewRefresh());
-    }
-
     const ticketViewRefresh = () => {
         if (!updatePage) {
             setUpdatePage(true);
@@ -35,6 +31,17 @@ const TicketDisplay = () => {
     const toggleArchived = () => {
         showArchived ? setShowArchived(false) : setShowArchived(true);
     }
+
+    const editTicket = e => {
+        // click event is set up to properly reference the id of the ticket, but the actual interface to do the editing doesn't exist yet. Two possible approaches. 1. get Ticket Creator to reopen with the relevant inputs in place, then submit that once edited to change the ticket. 2. Create another editor component that looks similar, edits the ticket instead. I think option two, despite requiring a separate component, will be easier to create and customize.
+        console.log(e.target.value)
+
+        // API.editTicket(e.target.value)
+        // .then(ticketViewRefresh());
+    }
+
+    const { inputs, handleInputChange, handleSubmit } = useForm(editTicket);
+
 
     return (
         <div>
@@ -53,7 +60,7 @@ const TicketDisplay = () => {
                                     <p>{ticket.status}</p>
                                     <p>{ticket.description}</p>
                                     <p>Priority {ticket.priority}</p>
-                                    <button>Edit</button>
+                                    <button value={ticket.id} onClick={editTicket}>Edit</button>
                                     <button value={ticket.id} onClick={deleteTicket}>Delete</button>
                                 </div>
                             )
@@ -73,7 +80,7 @@ const TicketDisplay = () => {
                                     <p>{ticket.status}</p>
                                     <p>{ticket.description}</p>
                                     <p>Priority {ticket.priority}</p>
-                                    <button>Edit</button>
+                                    <button value={ticket.id} onClick={editTicket}>Edit</button>
                                     <button value={ticket.id} onClick={deleteTicket}>Delete</button>
                                 </div>
                             )
@@ -93,7 +100,7 @@ const TicketDisplay = () => {
                                     <p>{ticket.status}</p>
                                     <p>{ticket.description}</p>
                                     <p>Priority {ticket.priority}</p>
-                                    <button>Edit</button>
+                                    <button value={ticket.id} onClick={editTicket}>Edit</button>
                                     <button value={ticket.id} onClick={deleteTicket}>Delete</button>
                                 </div>
                             )
@@ -116,7 +123,7 @@ const TicketDisplay = () => {
                                             <p>{ticket.status}</p>
                                             <p>{ticket.description}</p>
                                             <p>Priority {ticket.priority}</p>
-                                            <button>Edit</button>
+                                            <button value={ticket.id} onClick={editTicket}>Edit</button>
                                             <button value={ticket.id} onClick={deleteTicket}>Delete</button>
                                         </div>
                                     )

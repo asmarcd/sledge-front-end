@@ -36,8 +36,6 @@ const TicketCreator = () => {
         toggleTicketCreator();
     }
 
-
-
     const { inputs, handleInputChange, handleSubmit } = useForm(newTicket);
 
     return (
