@@ -46,6 +46,20 @@ const API = {
         }
     },
 
+    editTicket: async editedID => {
+        try {
+            const res = await fetch(`${URL_PREFIX}/tickets/${editedID}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            return await res.json();
+        } catch (err) {
+            return null
+        }
+    },
+
     allLabels: async labels => {
         try {
             const res = await fetch(`${URL_PREFIX}/labels`, {

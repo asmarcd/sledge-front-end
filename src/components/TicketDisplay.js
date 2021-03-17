@@ -19,6 +19,11 @@ const TicketDisplay = () => {
             .then(ticketViewRefresh())
     }
 
+    const editTicket = e => {
+        API.editTicket(e.target.value)
+        .then(ticketViewRefresh());
+    }
+
     const ticketViewRefresh = () => {
         if (!updatePage) {
             setUpdatePage(true);
@@ -31,14 +36,12 @@ const TicketDisplay = () => {
         showArchived ? setShowArchived(false) : setShowArchived(true);
     }
 
-    //   organize by status, so to do, in progress, complete, each have their own column. You can pull up archived separately. 
-
     return (
         <div>
             <h1>Tickets</h1>
             <section className='ticketContainer'>
                 <h2>To Do</h2>
-                <column className='toDoCol'>
+                <div className='toDoCol'>
                     {tickets.map(ticket => {
                         if (ticket.status === 'To Do') {
                             return (
@@ -56,9 +59,9 @@ const TicketDisplay = () => {
                             )
                         }
                     })}
-                </column>
+                </div>
                 <h2>In Progress</h2>
-                <column className='inProgCol'>
+                <div className='inProgCol'>
                     {tickets.map(ticket => {
                         if (ticket.status === 'In Progress') {
                             return (
@@ -76,9 +79,9 @@ const TicketDisplay = () => {
                             )
                         }
                     })}
-                </column>
+                </div>
                 <h2>Complete</h2>
-                <column className='completeCol'>
+                <div className='completeCol'>
                     {tickets.map(ticket => {
                         if (ticket.status === 'Complete') {
                             return (
@@ -96,12 +99,12 @@ const TicketDisplay = () => {
                             )
                         }
                     })}
-                </column>
+                </div>
                 {!showArchived ? <button onClick={toggleArchived}>Show Archived Tickets</button> :
                     <div>
                         <h2>Archived</h2>
                         <button onClick={toggleArchived}>Hide Archived Tickets</button>
-                        <column className='archivedCol'>
+                        <div className='archivedCol'>
                             {tickets.map(ticket => {
                                 if (ticket.status === 'Archived') {
                                     return (
@@ -119,7 +122,7 @@ const TicketDisplay = () => {
                                     )
                                 }
                             })}
-                        </column>
+                        </div>
                     </div>
                 }
             </section>
