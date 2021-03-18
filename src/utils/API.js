@@ -16,6 +16,18 @@ const API = {
         }
     },
 
+    getTicket: async (ticket) => {
+        try {
+            const res = await fetch(`${URL_PREFIX}/tickets/${ticket}`, {
+                method: 'GET',
+                body: JSON.stringify(ticket)
+            });
+            return await res.json();
+        } catch (err) {
+            return null;
+        }
+    },
+
     // create a new ticket
     createTicket: async newTicket => {
         try {

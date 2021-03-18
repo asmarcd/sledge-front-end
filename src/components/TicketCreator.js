@@ -27,7 +27,7 @@ const TicketCreator = () => {
         }
     };
 
-    const newTicket = () => {
+    const submitTicket = () => {
         API.createTicket(inputs)
 
         alert(`New Ticket Submitted!
@@ -36,7 +36,7 @@ const TicketCreator = () => {
         toggleTicketCreator();
     }
 
-    const { inputs, handleInputChange, handleSubmit } = useForm(newTicket);
+    const { inputs, handleInputChange, handleSubmit } = useForm(submitTicket);
 
     return (
         <div>

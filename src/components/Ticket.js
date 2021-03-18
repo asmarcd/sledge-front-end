@@ -1,13 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import API from '../utils/API';
 import { UpdatePageContext } from './TicketDisplay';
+import TicketEditor from './TicketEditor';
 
 const Ticket = props => {
 
     const updatePage = useContext(UpdatePageContext);
+    const [editView, setEditView] = useState(false)
 
-    const editTicket = e => {
-        console.log('testing');
+    const [ticketInfo, setTicketInfo] = useState({
+        id: props.props.id,
+        title: props.props.title,
+        owner: props.props.owner,
+        label: props.props.label,
+        status: props.props.status,
+        description: props.props.description,
+        priority: props.props.priority
+    })
+
+    const openEditor = e => {
+        setEditView(true);
     };
 
     const deleteTicket = e => {
@@ -16,16 +28,22 @@ const Ticket = props => {
     };
 
     return (
-        <div key={props.props.id}>
-            <h3>{props.props.title}</h3>
-            <h4>Creator: TBD Owner: {props.props.owner}</h4>
-            <h4>Created: {props.props.createdAt} Last Updated: {props.props.updatedAt}</h4>
-            <p>{props.props.label}</p>
-            <p>{props.props.status}</p>
-            <p>{props.props.description}</p>
-            <p>Priority {props.props.priority}</p>
-            <button value={props.props.id} onClick={editTicket}>Edit</button>
-            <button value={props.props.id} onClick={deleteTicket}>Delete</button>
+        <div>
+            {!editView ?
+                <div key={props.props.id}>
+                    <h3>{props.props.title}</h3>
+                    <h4>Creator: TBD Owner: {props.props.owner}</h4>
+                    <h4>Created: {props.props.createdAt} Last Updated: {props.props.updatedAt}</h4>
+                    <p>{props.props.label}</p>
+                    <p>{props.props.status}</p>
+                    <p>{props.props.description}</p>
+                    <p>Priority {props.props.priority}</p>
+                    <button value={props.props.id} onClick={openEditor}>Edit</button>
+                    <button value={props.props.id} onClick={deleteTicket}>Delete</button>
+                </div>
+                :
+                <TicketEditor ticketInfo={ticketInfo}/>
+            }
         </div>
     )
 }
