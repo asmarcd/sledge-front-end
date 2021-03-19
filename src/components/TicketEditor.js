@@ -2,12 +2,14 @@ import React, { useContext, useState, useEffect } from 'react';
 import LabelCreator from './LabelCreator';
 import API from '../utils/API';
 import { EditTicketContext } from './Ticket';
+import { UpdatePageContext } from './TicketDisplay';
 
 export const LabelContext = React.createContext();
 
 const TicketEditor = props => {
 
-    const toggleTicketEditor = useContext(EditTicketContext);
+    const ToggleTicketEditor = useContext(EditTicketContext);
+    const PageRefresh = useContext(UpdatePageContext);
     const [newLabelView, setNewLabelView] = useState(false);
     const [labels, setLabels] = useState([]);
     const [inputs, setInputs] = useState(props.ticketInfo)
@@ -32,7 +34,8 @@ const TicketEditor = props => {
 
         alert(`${props.ticketInfo.title} edited`);
 
-        toggleTicketEditor();
+        ToggleTicketEditor();
+        PageRefresh();
     }
 
     const handleSubmit = e => {
@@ -99,7 +102,7 @@ const TicketEditor = props => {
                 </label>
                 <br />
                 <button type='submit' >Submit</button>
-                <button onClick={toggleTicketEditor}>Cancel</button>
+                <button onClick={ToggleTicketEditor}>Cancel</button>
             </form>
         </div>
     )
