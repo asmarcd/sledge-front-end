@@ -54,6 +54,7 @@ const TicketCreator = () => {
                 <label>
                     Status:
                     <select name="status" onChange={handleInputChange} value={inputs.status}>
+                        <option value=""></option>
                         <option value='To Do'>To Do</option>
                         <option value='In Progress'>In Progress</option>
                         <option value='Complete'>Complete</option>
@@ -64,6 +65,7 @@ const TicketCreator = () => {
                 <label>
                     Choose a Label:
                     <select name="label" onChange={handleInputChange} value={inputs.label}>
+                        <option value=""></option>
                         {labels.map(label => {
                             return (<option key={label.id} value={label.name}>{label.name}</option>)
                         })}
