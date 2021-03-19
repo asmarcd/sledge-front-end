@@ -58,13 +58,15 @@ const API = {
         }
     },
 
-    editTicket: async editedID => {
+    editTicket: async ticket => {
+        console.log(ticket)
         try {
-            const res = await fetch(`${URL_PREFIX}/tickets/${editedID}`, {
+            const res = await fetch(`${URL_PREFIX}/tickets/${ticket.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                }
+                },
+                body: JSON.stringify(ticket)
             });
             return await res.json();
         } catch (err) {

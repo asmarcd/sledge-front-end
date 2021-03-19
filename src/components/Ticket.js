@@ -3,6 +3,8 @@ import API from '../utils/API';
 import { UpdatePageContext } from './TicketDisplay';
 import TicketEditor from './TicketEditor';
 
+export const EditTicketContext = React.createContext();
+
 const Ticket = props => {
 
     const updatePage = useContext(UpdatePageContext);
@@ -18,8 +20,8 @@ const Ticket = props => {
         priority: props.props.priority
     })
 
-    const openEditor = e => {
-        setEditView(true);
+    const toggleEditor = () => {
+        (!editView ? setEditView(true) : setEditView(false))
     };
 
     const deleteTicket = e => {
@@ -38,11 +40,13 @@ const Ticket = props => {
                     <p>{props.props.status}</p>
                     <p>{props.props.description}</p>
                     <p>Priority {props.props.priority}</p>
-                    <button value={props.props.id} onClick={openEditor}>Edit</button>
+                    <button value={props.props.id} onClick={toggleEditor}>Edit</button>
                     <button value={props.props.id} onClick={deleteTicket}>Delete</button>
                 </div>
                 :
-                <TicketEditor ticketInfo={ticketInfo}/>
+                <EditTicketContext.Provider value = {toggleEditor}>
+                    <TicketEditor ticketInfo={ticketInfo} />
+                </EditTicketContext.Provider>
             }
         </div>
     )
