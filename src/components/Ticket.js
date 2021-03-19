@@ -10,6 +10,7 @@ const Ticket = props => {
     const updatePage = useContext(UpdatePageContext);
     const [editView, setEditView] = useState(false)
 
+    // eslint-disable-next-line
     const [ticketInfo, setTicketInfo] = useState({
         id: props.props.id,
         title: props.props.title,
