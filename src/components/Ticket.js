@@ -31,9 +31,9 @@ const Ticket = props => {
     };
 
     return (
-        <div>
+        <div className='block'>
             {!editView ?
-                <div className='box block' key={props.props.id}>
+                <div className='box' key={props.props.id}>
                     <header className='title is-6'>{props.props.title}</header >
                     <h4>Creator: TBD Owner: {props.props.owner}</h4>
                     <h4>Created: {props.props.createdAt} Last Updated: {props.props.updatedAt}</h4>

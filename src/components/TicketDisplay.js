@@ -31,7 +31,7 @@ const TicketDisplay = () => {
 
 
     return (
-        <div className='box'>
+        <div >
             <section className='columns'>
                 <div className='column'>
                     <header className='title is-4'>To Do</header>
