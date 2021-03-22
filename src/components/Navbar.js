@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ViewContext } from '../App';
+import Logo from './logo.png'
 
 const Navbar = () => {
 
@@ -10,20 +11,20 @@ const Navbar = () => {
     return (
         <nav className='navbar block' role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="#">Sledgehammer!</a>
+                <img className="navbar-item" src={Logo} alt='Sledgehammer Logo' />
 
-                <a onClick={()=> {
+                <div onClick={() => {
                     setisActive(!isActive)
                 }}
-                role="button" 
-                className={`navbar-burger burger ${isActive ? 'is-active' : ''}`} 
-                aria-label="menu" 
-                aria-expanded="false" 
-                data-target='navMenu'>
+                    role="button"
+                    className={`navbar-burger burger ${isActive ? 'is-active' : ''}`}
+                    aria-label="menu"
+                    aria-expanded="false"
+                    data-target='navMenu'>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
-                </a>
+                </div>
             </div>
 
             <div id='navMenu' className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
@@ -39,18 +40,18 @@ const Navbar = () => {
                 <div className='navbar-end'>
                     <div className='navbar-item'>
                         <div className="buttons">
-                            <a className="button is-primary">
+                            <button className="button is-primary">
                                 <strong>Sign up</strong>
-                            </a>
-                            <a className="button is-light">
+                            </button>
+                            <button className="button is-light">
                                 Log in
-                        </a>
+                            </button>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </nav>)
+        </nav>
+    )
 }
 
 export default Navbar;
