@@ -54,9 +54,9 @@ const TicketEditor = props => {
     };
 
     return (
-        <div>
-            <h1>Edit {inputs.title}</h1>
-            <button onClick={toggleLabelCreator}>Add a new label</button>
+        <div className='box'>
+            <header className='title is-6'>Edit {inputs.title}</header>
+            <button className='button' onClick={toggleLabelCreator}>Add a new label</button>
             <LabelContext.Provider value={toggleLabelCreator}>
                 {newLabelView ? <LabelCreator /> : <div></div>}
             </LabelContext.Provider>
@@ -101,8 +101,8 @@ const TicketEditor = props => {
                     </select>
                 </label>
                 <br />
-                <button type='submit' >Submit</button>
-                <button onClick={ToggleTicketEditor}>Cancel</button>
+                <button className='button' type='submit' >Submit</button>
+                <button className='button' onClick={ToggleTicketEditor}>Cancel</button>
             </form>
         </div>
     )

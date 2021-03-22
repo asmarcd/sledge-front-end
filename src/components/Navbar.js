@@ -7,8 +7,9 @@ const Navbar = () => {
 
     return (
         <div>
-            <h2>Sledgehammer!</h2>
-            <button onClick={toggleTicketCreator}>Create New Ticket</button>
+            <header className='title is-1'>Sledgehammer!</header>
+            <header className='subtitle'>Crush your biggest bugs</header>
+            <button className='button' onClick={toggleTicketCreator}>Create New Ticket</button>
         </div>
     )
 }

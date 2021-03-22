@@ -33,16 +33,16 @@ const Ticket = props => {
     return (
         <div>
             {!editView ?
-                <div key={props.props.id}>
-                    <h3>{props.props.title}</h3>
+                <div className='box block' key={props.props.id}>
+                    <header className='title is-6'>{props.props.title}</header >
                     <h4>Creator: TBD Owner: {props.props.owner}</h4>
                     <h4>Created: {props.props.createdAt} Last Updated: {props.props.updatedAt}</h4>
                     <p>{props.props.label}</p>
                     <p>{props.props.status}</p>
                     <p>{props.props.description}</p>
                     <p>Priority {props.props.priority}</p>
-                    <button value={props.props.id} onClick={toggleEditor}>Edit</button>
-                    <button value={props.props.id} onClick={deleteTicket}>Delete</button>
+                    <button className='button' value={props.props.id} onClick={toggleEditor}>Edit</button>
+                    <button className='button' value={props.props.id} onClick={deleteTicket}>Delete</button>
                 </div>
                 :
                 <EditTicketContext.Provider value = {toggleEditor}>

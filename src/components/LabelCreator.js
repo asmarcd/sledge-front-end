@@ -22,7 +22,7 @@ const LabelCreator = () => {
             <label>
                 <input type="text" name="name" placeholder='Enter a new label' onChange={handleInputChange} value={inputs.name} />
             </label>
-            <button type='submit'>Submit</button>
+            <button className='button' type='submit'>Submit</button>
         </form>
     )
 

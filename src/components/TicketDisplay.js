@@ -31,11 +31,10 @@ const TicketDisplay = () => {
 
 
     return (
-        <div>
-            <h1>Tickets</h1>
-            <section className='ticketContainer'>
-                <h2>To Do</h2>
-                <div className='toDoCol'>
+        <div className='box'>
+            <section className='columns'>
+                <div className='column'>
+                    <header className='title is-4'>To Do</header>
                     {tickets.map(ticket => {
                         if (ticket.status === 'To Do') {
                             return (
@@ -47,8 +46,8 @@ const TicketDisplay = () => {
                         return ("")
                     })}
                 </div>
-                <h2>In Progress</h2>
-                <div className='inProgCol'>
+                <div className='column'>
+                    <header className='title is-4'>In Progress</header>
                     {tickets.map(ticket => {
                         if (ticket.status === 'In Progress') {
                             return (
@@ -60,8 +59,8 @@ const TicketDisplay = () => {
                         return ("")
                     })}
                 </div>
-                <h2>Complete</h2>
-                <div className='completeCol'>
+                <div className='column'>
+                    <header className='title is-4'>Complete</header>
                     {tickets.map(ticket => {
                         if (ticket.status === 'Complete') {
                             return (
@@ -73,25 +72,25 @@ const TicketDisplay = () => {
                         return ("")
                     })}
                 </div>
-                {!showArchived ? <button onClick={toggleArchived}>Show Archived Tickets</button> :
-                    <div>
-                        <h2>Archived</h2>
-                        <div className='archivedCol'>
-                            {tickets.map(ticket => {
-                                if (ticket.status === 'Archived') {
-                                    return (
-                                        <UpdatePageContext.Provider value={ticketViewRefresh}>
-                                            <Ticket props={ticket} />
-                                        </UpdatePageContext.Provider>
-                                    )
-                                }
-                                return ("")
-                            })}
-                        </div>
-                        <button onClick={toggleArchived}>Hide Archived Tickets</button>
-                    </div>
-                }
             </section>
+            {!showArchived ? <button className='button' onClick={toggleArchived}>Show Archived Tickets</button> :
+                <div>
+                    <div className='column'>
+                        <header className='title is-4'>Archived</header>
+                        {tickets.map(ticket => {
+                            if (ticket.status === 'Archived') {
+                                return (
+                                    <UpdatePageContext.Provider value={ticketViewRefresh}>
+                                        <Ticket props={ticket} />
+                                    </UpdatePageContext.Provider>
+                                )
+                            }
+                            return ("")
+                        })}
+                    </div>
+                    <button className='button' onClick={toggleArchived}>Hide Archived Tickets</button>
+                </div>
+            }
         </div>
     )
 }

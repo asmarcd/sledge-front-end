@@ -41,7 +41,7 @@ const TicketCreator = () => {
     return (
         <div>
             <h1>Submit a New Ticket</h1>
-            <button onClick={toggleLabelCreator}>Add a new label</button>
+            <button className='button' onClick={toggleLabelCreator}>Add a new label</button>
             <LabelContext.Provider value={toggleLabelCreator}>
                 {newLabelView ? <LabelCreator /> : <div></div>}
             </LabelContext.Provider>
@@ -88,8 +88,8 @@ const TicketCreator = () => {
                     </select>
                 </label>
                 <br />
-                <button type='submit' >Submit</button>
-                <button onClick={toggleTicketCreator}>Cancel</button>
+                <button className='button' type='submit' >Submit</button>
+                <button className='button' onClick={toggleTicketCreator}>Cancel</button>
             </form>
         </div>
     )
