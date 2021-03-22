@@ -39,8 +39,8 @@ const TicketCreator = () => {
     const { inputs, handleInputChange, handleSubmit } = useForm(submitTicket);
 
     return (
-        <div>
-            <h1>Submit a New Ticket</h1>
+        <div className='box'>
+            <header className='title is-6'>Submit a New Ticket</header>
             <button className='button' onClick={toggleLabelCreator}>Add a new label</button>
             <LabelContext.Provider value={toggleLabelCreator}>
                 {newLabelView ? <LabelCreator /> : <div></div>}
