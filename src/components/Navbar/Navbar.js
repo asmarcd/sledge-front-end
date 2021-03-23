@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ViewContext } from '../../App';
+import UserCreator from '../UserCreator/UserCreator';
 import Logo from './logo.png'
 
 const Navbar = () => {
@@ -7,6 +8,11 @@ const Navbar = () => {
     const toggleTicketCreator = useContext(ViewContext);
 
     const [isActive, setisActive] = useState(false);
+    const [userCreatorView, setUserCreatorView] = useState(false);
+
+    const toggleUserCreator = () => {
+        setUserCreatorView(!userCreatorView)
+    }
 
     return (
         <nav className='navbar block' role="navigation" aria-label="main navigation">
@@ -40,7 +46,7 @@ const Navbar = () => {
                 <div className='navbar-end'>
                     <div className='navbar-item'>
                         <div className="buttons">
-                            <button className="button is-primary">
+                            <button className="button is-primary" onClick={toggleUserCreator}>
                                 <strong>Sign up</strong>
                             </button>
                             <button className="button is-light">
@@ -50,6 +56,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            <UserCreator view={{userCreatorView, toggleUserCreator}}/>
         </nav>
     )
 }
