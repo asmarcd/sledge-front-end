@@ -10,7 +10,7 @@ const LabelCreator = () => {
     const newLabel = () => {
         API.createLabel(inputs);
 
-        alert(`New Label ${inputs.name} Created!`);
+        alert(`New Label "${inputs.name}" Created!`);
 
         toggleLabelCreator();
     }

@@ -19,11 +19,7 @@ const TicketDisplay = () => {
     }, [updatePage]);
 
     const ticketViewRefresh = () => {
-        if (!updatePage) {
-            setUpdatePage(true);
-        } else {
-            setUpdatePage(false);
-        }
+        setUpdatePage(!updatePage)
     };
 
     const toggleArchived = () => {

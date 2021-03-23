@@ -22,17 +22,13 @@ const TicketEditor = props => {
     }, [newLabelView]);
 
     const toggleLabelCreator = () => {
-        if (!newLabelView) {
-            setNewLabelView(true);
-        } else {
-            setNewLabelView(false);
-        }
+        setNewLabelView(!newLabelView);
     };
 
     const editTicket = () => {
         API.editTicket(inputs);
 
-        alert(`${props.ticketInfo.title} edited`);
+        alert(`"${props.ticketInfo.title}" edited`);
 
         ToggleTicketEditor();
         PageRefresh();

@@ -9,21 +9,20 @@ export const ViewContext = React.createContext();
 function App() {
 
   const [ticketCreatorView, setTicketCreatorView] = useState(false);
- 
+
   const toggleTicketCreator = () => {
-    if (!ticketCreatorView) {
-      setTicketCreatorView(true);
-    } else {
-      setTicketCreatorView(false);
-    }
+    setTicketCreatorView(!ticketCreatorView);
   };
 
   return (
     <div className="App">
       <ViewContext.Provider value={toggleTicketCreator}>
         <Navbar />
-        {ticketCreatorView ? <TicketCreator /> : <div></div> }
-        <TicketDisplay />
+        {ticketCreatorView ?
+          <div>
+            <TicketCreator />
+            <TicketDisplay />
+          </div> : <TicketDisplay />}
       </ViewContext.Provider>
     </div>
   );

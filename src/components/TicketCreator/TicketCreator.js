@@ -21,18 +21,14 @@ const TicketCreator = () => {
     }, [newLabelView]);
 
     const toggleLabelCreator = () => {
-        if (!newLabelView) {
-            setNewLabelView(true);
-        } else {
-            setNewLabelView(false);
-        }
+        setNewLabelView(!newLabelView);
     };
 
     const submitTicket = () => {
         API.createTicket(inputs)
 
         alert(`New Ticket Submitted!
-        Title: ${inputs.title}`)
+        Title: "${inputs.title}"`)
 
         toggleTicketCreator();
     }
