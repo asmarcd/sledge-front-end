@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import TicketDisplay from './components/TicketDisplay';
-import Navbar from './components/Navbar';
+import TicketDisplay from './components/TicketDisplay/TicketDisplay';
+import Navbar from './components/Navbar/Navbar';
 import TicketCreator from './components/TicketCreator';
 
 export const ViewContext = React.createContext();

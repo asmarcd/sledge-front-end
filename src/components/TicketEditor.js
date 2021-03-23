@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import LabelCreator from './LabelCreator';
 import API from '../utils/API';
 import { EditTicketContext } from './Ticket';
-import { UpdatePageContext } from './TicketDisplay';
+import { UpdatePageContext } from './TicketDisplay/TicketDisplay';
 
 export const LabelContext = React.createContext();
 

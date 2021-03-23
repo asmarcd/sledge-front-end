@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import API from '../utils/API';
-import Ticket from './Ticket';
+import API from '../../utils/API';
+import Ticket from '../Ticket';
+import './style.css';
 
 export const UpdatePageContext = React.createContext();
 
@@ -33,7 +34,7 @@ const TicketDisplay = () => {
     return (
         <div >
             <section className='columns'>
-                <div className='column'>
+                <div className='column box'>
                     <header className='title is-4'>To Do</header>
                     {tickets.map(ticket => {
                         if (ticket.status === 'To Do') {
@@ -46,7 +47,7 @@ const TicketDisplay = () => {
                         return ("")
                     })}
                 </div>
-                <div className='column'>
+                <div className='column box'>
                     <header className='title is-4'>In Progress</header>
                     {tickets.map(ticket => {
                         if (ticket.status === 'In Progress') {
@@ -59,7 +60,7 @@ const TicketDisplay = () => {
                         return ("")
                     })}
                 </div>
-                <div className='column'>
+                <div className='column box'>
                     <header className='title is-4'>Complete</header>
                     {tickets.map(ticket => {
                         if (ticket.status === 'Complete') {

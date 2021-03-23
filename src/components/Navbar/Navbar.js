@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ViewContext } from '../App';
+import { ViewContext } from '../../App';
 import Logo from './logo.png'
 
 const Navbar = () => {

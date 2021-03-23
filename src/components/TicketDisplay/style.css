@@ -1,0 +1,10 @@
+.columns {
+    align-items:flex-start;
+    padding-left: 2vw;
+}
+
+.column {
+    background-color: gainsboro;
+    max-width: 30vw;
+    margin: 1vw;
+}

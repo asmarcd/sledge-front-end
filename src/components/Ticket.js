@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import API from '../utils/API';
-import { UpdatePageContext } from './TicketDisplay';
+import { UpdatePageContext } from './TicketDisplay/TicketDisplay';
 import TicketEditor from './TicketEditor';
 
 export const EditTicketContext = React.createContext();
