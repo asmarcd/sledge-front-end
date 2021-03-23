@@ -99,6 +99,21 @@ const API = {
         } catch (err) {
             return null;
         }
+    },
+
+    createUser: async user => {
+        try {
+            const res = await fetch(`${URL_PREFIX}/users`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user)
+            });
+            return await res.json();
+        } catch (err) {
+            return null;
+        }
     }
     // remember to add comma above when you add next function
 }
