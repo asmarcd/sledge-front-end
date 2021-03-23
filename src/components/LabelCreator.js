@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import useForm from '../utils/CustomHooks';
 import API from '../utils/API';
-import { LabelContext } from './TicketCreator'
+import { LabelContext } from './TicketCreator/TicketCreator'
 
 const LabelCreator = () => {
 

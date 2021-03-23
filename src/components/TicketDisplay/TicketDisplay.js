@@ -34,7 +34,7 @@ const TicketDisplay = () => {
     return (
         <div >
             <section className='columns'>
-                <div className='column box'>
+                <div className='column box statusCol'>
                     <header className='title is-4'>To Do</header>
                     {tickets.map(ticket => {
                         if (ticket.status === 'To Do') {
@@ -47,7 +47,7 @@ const TicketDisplay = () => {
                         return ("")
                     })}
                 </div>
-                <div className='column box'>
+                <div className='column box statusCol'>
                     <header className='title is-4'>In Progress</header>
                     {tickets.map(ticket => {
                         if (ticket.status === 'In Progress') {
@@ -60,7 +60,7 @@ const TicketDisplay = () => {
                         return ("")
                     })}
                 </div>
-                <div className='column box'>
+                <div className='column box statusCol'>
                     <header className='title is-4'>Complete</header>
                     {tickets.map(ticket => {
                         if (ticket.status === 'Complete') {
@@ -76,7 +76,7 @@ const TicketDisplay = () => {
             </section>
             {!showArchived ? <button className='button' onClick={toggleArchived}>Show Archived Tickets</button> :
                 <div>
-                    <div className='column'>
+                    <div className='column box statusCol'>
                         <header className='title is-4'>Archived</header>
                         {tickets.map(ticket => {
                             if (ticket.status === 'Archived') {

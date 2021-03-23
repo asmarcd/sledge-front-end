@@ -3,7 +3,12 @@
     padding-left: 2vw;
 }
 
-.statusCol {
+.blankBox {
+    background-color: transparent;
+    max-width: 32vw;
+}
+
+.ticketCreator {
     background-color: gainsboro;
     max-width: 30vw;
     margin: 1vw;
