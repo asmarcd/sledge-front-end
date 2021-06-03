@@ -30,13 +30,29 @@ const Ticket = props => {
             .then(updatePage())
     };
 
+    // These variables are all set up to reformat the dates coming in fromt he database so they're more human readable. There's got to be a more straightforward way to do this - using .toLocaleDateString didn't work I think bc of the way the incoming data is formatted. I also tried using an object for Intl.DateTimeFormat but I had issues incorporating it into the React display.
+    const createdDateUnform = props.props.createdAt.split("T")[0];
+    const updatedDateUnform = props.props.updatedAt.split("T")[0];
+    
+    const createdDateArray = createdDateUnform.split("-");
+    const createdDateYear = createdDateArray[0];
+    const createdDateMonth = createdDateArray[1];
+    const createdDateDay = createdDateArray[2];
+
+    const updatedDateArray = updatedDateUnform.split("-");
+    const updatedDateYear = updatedDateArray[0];
+    const updatedDateMonth = updatedDateArray[1];
+    const updatedDateDay = updatedDateArray[2];
+
     return (
         <div className='block'>
             {!editView ?
                 <div className='box' key={props.props.id}>
                     <header className='title is-6'>{props.props.title}</header >
-                    <h4>Creator: TBD Owner: {props.props.owner}</h4>
-                    <h4>Created: {props.props.createdAt} Last Updated: {props.props.updatedAt}</h4>
+                    <h4>Creator: TBD</h4>
+                    <h4>Owner: {props.props.owner}</h4>
+                    <h4>Created: {createdDateMonth}/{createdDateDay}/{createdDateYear}</h4> 
+                    <h4>Last Updated: {updatedDateMonth}/{updatedDateDay}/{updatedDateYear}</h4>
                     <p>{props.props.label}</p>
                     <p>{props.props.status}</p>
                     <p>{props.props.description}</p>
