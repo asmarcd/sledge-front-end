@@ -72,20 +72,28 @@ const TicketDisplay = () => {
             </section>
             {!showArchived ? <button className='button' onClick={toggleArchived}>Show Archived Tickets</button> :
                 <div>
-                    <div className='column box statusCol'>
-                        <header className='title is-4'>Archived</header>
-                        {tickets.map(ticket => {
-                            if (ticket.status === 'Archived') {
-                                return (
-                                    <UpdatePageContext.Provider value={ticketViewRefresh}>
-                                        <Ticket props={ticket} />
-                                    </UpdatePageContext.Provider>
-                                )
-                            }
-                            return ("")
-                        })}
-                    </div>
-                    <button className='button' onClick={toggleArchived}>Hide Archived Tickets</button>
+                    <section className='columns'>
+                        <div className='column'></div>
+                        <div className='column box statusCol'>
+                            <header className='title is-4'>Archived</header>
+                            {tickets.map(ticket => {
+                                if (ticket.status === 'Archived') {
+                                    return (
+                                        <UpdatePageContext.Provider value={ticketViewRefresh}>
+                                            <Ticket props={ticket} />
+                                        </UpdatePageContext.Provider>
+                                    )
+                                }
+                                return ("")
+                            })}
+                        </div>
+                        <div className='column'></div>
+                    </section>
+                    <section className='columns'>
+                        <div className='column'></div>
+                        <button className='button' onClick={toggleArchived}>Hide Archived Tickets</button>
+                        <div className='column'></div>
+                    </section>
                 </div>
             }
         </div>
